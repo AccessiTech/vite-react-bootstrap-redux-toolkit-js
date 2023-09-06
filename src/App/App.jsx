@@ -1,29 +1,15 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home } from "../pages/Home/Home";
 import "./App.scss";
-import Temp from "../components/Temp/Temp";
-import { Button, Col, Container, Row } from "react-bootstrap";
-import { reset, useCount } from "../store/count";
-import store from "../store/store";
 
 function App() {
-  const count = useCount();
-
   return (
-    <Container>
-      <Row>
-        <Col>
-          <Temp />
-          <p>Count is {count}</p>
-          <Button
-            variant="secondary"
-            onClick={() => {
-              store.dispatch(reset());
-            }}
-          >
-            Reset Count
-          </Button>
-        </Col>
-      </Row>
-    </Container>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<h1>404</h1>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
